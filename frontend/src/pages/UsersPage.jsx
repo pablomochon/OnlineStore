@@ -8,14 +8,14 @@ export const UsersPage = () => {
     const {
         users,
         visibleForm,
-        handlerOpenForm, 
-        getUsers
+        handlerOpenForm,
+        getUsers,
     } = useContext(UserContext);
 
-    useEffect(()=>{
+    useEffect(() => {
         getUsers();
-    },[])
-
+    }, []);
+    
     return (
         <>
 
