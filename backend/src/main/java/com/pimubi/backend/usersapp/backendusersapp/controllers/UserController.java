@@ -6,14 +6,11 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,43 +23,43 @@ import com.pimubi.backend.usersapp.backendusersapp.services.UserService;
 public class UserController {
     
     @Autowired
-    private UserService service;
-
-    @GetMapping
-    public List<User> list() {
-        return service.findAll();
-    }
+    private UserService UserService;
     /*
-        @GetMapping("/{id}")
-        public ResponseEntity<?> show(@PathVariable Long id) {
-            Optional<User> userOptionl = service.findById(id);
-
-            if(userOptionl.isPresent()){
-                return ResponseEntity.ok(userOptionl.orElseThrow());
-            }
-            return ResponseEntity.notFound().build();
+        @GetMapping
+        public List<User> list() {
+            return service.findAll();
         }
 
-        @PostMapping
-        public ResponseEntity<?> create( @RequestBody User user, BindingResult result){
-            if (result.hasErrors()) {
-                return validation(result);
-            }
-            return ResponseEntity.status(HttpStatus.CREATED).body(service.save(user));
-        }
+            @GetMapping("/{id}")
+            public ResponseEntity<?> show(@PathVariable Long id) {
+                Optional<User> userOptionl = service.findById(id);
 
-        @PutMapping("/{id}")
-        public ResponseEntity<?> update(@RequestBody User user,BindingResult result, @PathVariable Long id) {
-            if (result.hasErrors()) {
-                return validation(result);
+                if(userOptionl.isPresent()){
+                    return ResponseEntity.ok(userOptionl.orElseThrow());
+                }
+                return ResponseEntity.notFound().build();
             }
-            Optional<User> o = service.update(user, id);
-            if(o.isPresent()) {
-                return ResponseEntity.status(HttpStatus.CREATED).body(o.orElseThrow());
+
+            @PostMapping
+            public ResponseEntity<?> create( @RequestBody User user, BindingResult result){
+                if (result.hasErrors()) {
+                    return validation(result);
+                }
+                return ResponseEntity.status(HttpStatus.CREATED).body(service.save(user));
             }
-            return ResponseEntity.notFound().build();
-        }
-    */
+
+            @PutMapping("/{id}")
+            public ResponseEntity<?> update(@RequestBody User user,BindingResult result, @PathVariable Long id) {
+                if (result.hasErrors()) {
+                    return validation(result);
+                }
+                Optional<User> o = service.update(user, id);
+                if(o.isPresent()) {
+                    return ResponseEntity.status(HttpStatus.CREATED).body(o.orElseThrow());
+                }
+                return ResponseEntity.notFound().build();
+            }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@RequestBody User user, @PathVariable Long id) {
         Optional<User> o = service.findById(id);
@@ -83,5 +80,6 @@ public class UserController {
         });
         return ResponseEntity.badRequest().body(errors);
     }
+     */
 
 }

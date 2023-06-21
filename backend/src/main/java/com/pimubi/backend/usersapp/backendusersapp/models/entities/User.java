@@ -1,6 +1,7 @@
 package com.pimubi.backend.usersapp.backendusersapp.models.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -19,6 +20,17 @@ public class User {
 
     @Column(unique = true)
     private String email;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Column
+    private String role;
 
     public Long getId() {
         return id;
@@ -52,5 +64,4 @@ public class User {
         this.email = email;
     }
 
-    
 }

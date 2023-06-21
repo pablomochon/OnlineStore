@@ -4,16 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import com.pimubi.backend.usersapp.backendusersapp.models.entities.User;
+import org.springframework.stereotype.Service;
 
-public interface UserService {
-    List<User> findAll();
+@Service
+public class UserService {
+    // List<User> findAll();
 
-    Optional<User> findById(Long id);
+    //Optional<User> findById(Long id);
 
-    User save(User user);
+    //User save(User user);
 
-    Optional<User> update(User user, Long id);
+    //Optional<User> update(User user, Long id);
 
-    void remove(Long id);
+    //void remove(Long id);
 }
 
