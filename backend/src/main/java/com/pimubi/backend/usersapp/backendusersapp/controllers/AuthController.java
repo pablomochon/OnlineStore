@@ -23,7 +23,7 @@ public class AuthController {
 
     @RequestMapping(value = {"/login"}, produces = "application/json", method = POST)
     public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest)
-            throws AuthenticationException, JOSEException {
+            throws AuthenticationException, JOSEException, com.pimubi.backend.usersapp.backendusersapp.services.AuthenticationException {
 
         TokenDto loggedInUserInfo = authenticationService.login(authenticationRequest); // return tokendto
         return Response.success(loggedInUserInfo).toResponseEntity();

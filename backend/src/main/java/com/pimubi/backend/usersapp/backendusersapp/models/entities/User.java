@@ -21,6 +21,9 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @Column
+    private String role;
+
     public String getRole() {
         return role;
     }
@@ -28,9 +31,6 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-
-    @Column
-    private String role;
 
     public Long getId() {
         return id;

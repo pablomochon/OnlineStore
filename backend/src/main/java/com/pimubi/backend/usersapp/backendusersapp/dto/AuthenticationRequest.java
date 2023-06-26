@@ -1,0 +1,31 @@
+package com.pimubi.backend.usersapp.backendusersapp.dto;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class AuthenticationRequest {
+    private String username;
+    private String password;
+
+    public AuthenticationRequest(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    @JsonProperty("username")
+    public String getUsername() {
+        return username;
+    }
+
+    @JsonProperty("password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}

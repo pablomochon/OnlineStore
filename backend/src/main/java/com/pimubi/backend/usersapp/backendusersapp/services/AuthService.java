@@ -9,9 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class AuthService {
 
@@ -36,14 +33,14 @@ public class AuthService {
             throw new AuthenticationException("Invalid username or password");
         }
 
-        // Obtener los roles del usuario
+        // Obtener el rol del usuario
         String role = user.getRole();
 
         // Verificar si el usuario es administrador
-        boolean isAdmin = role.contains("ADMIN");
+        boolean isAdmin = role.equalsIgnoreCase("admin");
 
         // Generar el token JWT
-        String token = tokenProvider.generateToken(user.getId(), role, isAdmin);
+        String token = tokenProvider.generateToken(username, role, isAdmin);
 
         // Crear y devolver el objeto TokenDto
         return new TokenDto(token);

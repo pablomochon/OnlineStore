@@ -20,15 +20,15 @@ public class TokenProvider {
     private static final String IS_ADMIN = "admin";
     @Value("${jwt.signing.key.secret}")
     private String tokenSecret;
-    private final static String ROLES_CLAIM = "roles";
+    private final static String ROLES_CLAIM = "role";
 
-    public String generateToken(String subject, List<String> roles, boolean isAdmin) throws JOSEException {
+    public String generateToken(String subject, String role, boolean isAdmin) throws JOSEException {
         JWSSigner signer = new MACSigner(tokenSecret);
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .subject(subject)
                 .issueTime(currentDate())
                 .expirationTime(new Date(System.currentTimeMillis() + 3600000)) //60 min
-                .claim(ROLES_CLAIM, StringUtils.join(roles, ", "))
+                .claim(ROLES_CLAIM, StringUtils.join(role, ", "))
                 .claim(IS_ADMIN, isAdmin)
                 .build();
 
