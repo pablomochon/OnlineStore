@@ -1,6 +1,6 @@
 import AuthService from "../services/auth.service";
 
-const Profile = () => {
+export const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
 
   return (
