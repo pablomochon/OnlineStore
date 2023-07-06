@@ -1,7 +1,5 @@
 package com.pimubi.storedev.controllers;
 
-import com.pimubi.storedev.services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
-
-    @Autowired
-    ProductService productService;
-
     @GetMapping("/")
     public String allfAccess() {
         return "Public Content.";

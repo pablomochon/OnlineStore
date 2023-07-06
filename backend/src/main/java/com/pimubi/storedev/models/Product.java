@@ -22,7 +22,7 @@ public class Product {
 
 
     //Here JoinColumn states that this entity is the owner of the relationship
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
