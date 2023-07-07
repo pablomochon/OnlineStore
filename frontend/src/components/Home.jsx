@@ -6,26 +6,33 @@ export const Home = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    UserService.getPublicContent().then(
+    UserService.getProducts().then(
       (response) => {
+        console.log(response.data)
         setContent(response.data);
       },
       (error) => {
-        const _content =
+        const contentError =
           (error.response && error.response.data) ||
           error.message ||
           error.toString();
 
-        setContent(_content);
+        setContent(contentError);
       }
-    );
-  }, []);
+    );}, []);
 
   return (
     <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
-      </header>
+    {Array.isArray(content) ? (
+      content.map(item => (
+        <div key={item.id}>
+          <h2>{item.name}</h2>
+          <p>{item.description}</p>
+        </div>
+      ))
+    ) : (
+      <p>No data available</p>
+    )}
     </div>
   );
 };
