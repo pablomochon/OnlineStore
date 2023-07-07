@@ -2,6 +2,7 @@ package com.pimubi.storedev.models;
 
 import jakarta.persistence.*;
 
+@Entity
 @Table(name = "roles")
 public class Role {
     @Id
