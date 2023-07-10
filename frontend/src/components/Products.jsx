@@ -1,3 +1,4 @@
+import './Products.css'
 import { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
@@ -22,23 +23,38 @@ export const Products = () => {
     );}, []);
 
   return (
-    <div className="container">
-    {Array.isArray(content) ? (
-      content.map(item => (
-        <ul key={item.id}>
-          <li><h1>{item.name}</h1></li>
-          <li>desc: {item.description}</li>
-          <li>price: {item.price}</li>
-          <li>brand: {item.brand}</li>
-          <li>stock: {item.stock}</li>
-          <li>volume: {item.volume}</li>
-          <li>cat: {item.category.name}</li>
-        </ul>
-      ))
-    ) : (
-      <p>No data available</p>
-    )}
-    </div>
+    <main className="container products">
+      <ul>
+        {Array.isArray(content) ? (content.map(p => {
+
+          return(
+            <li key={p.id}>
+              <img 
+              src=""
+              alt={p.name} />
+              <div>
+                <strong>{p.name}</strong> - ${p.price}
+              </div>
+              <div>
+                {p.brand}
+              </div>
+              <div>
+                {p.description}
+              </div>
+              <div>
+                volume: {p.volume} - weight: {p.weight}
+              </div>
+              <div>
+              stock: {p.stock}
+              </div>
+              <div>
+                <button>add</button>
+              </div>
+            </li>
+          )
+        })) : <p> no data avaible</p>}
+      </ul>
+    </main>
   );
 };
 
