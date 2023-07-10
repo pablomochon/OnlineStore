@@ -43,7 +43,6 @@ public class ProductController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MessageResponse> createProduct(@RequestBody Product product) {
         Product savedProduct = productService.saveProduct(product);
         return ResponseEntity.ok(new MessageResponse("Product created successfully."));
@@ -55,6 +54,14 @@ public class ProductController {
         if (product.isPresent()) {
             Product updatedProduct = product.get();
             updatedProduct.setName(productData.getName());
+            updatedProduct.setDescription(productData.getDescription());
+            updatedProduct.setBrand(productData.getBrand());
+            updatedProduct.setPrice(productData.getPrice());
+            updatedProduct.setWeight(productData.getWeight());
+            updatedProduct.setCategory(productData.getCategory());
+            updatedProduct.setBrand(productData.getBrand());
+
+
             // Actualizar otros atributos según sea necesario
 
             productService.saveProduct(updatedProduct);
