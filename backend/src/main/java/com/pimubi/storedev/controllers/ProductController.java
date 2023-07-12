@@ -61,9 +61,6 @@ public class ProductController {
             updatedProduct.setCategory(productData.getCategory());
             updatedProduct.setBrand(productData.getBrand());
 
-
-            // Actualizar otros atributos según sea necesario
-
             productService.saveProduct(updatedProduct);
             return ResponseEntity.ok(new MessageResponse("Product updated successfully."));
         } else {
