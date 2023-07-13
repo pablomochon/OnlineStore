@@ -1,42 +1,30 @@
-import { useState, useEffect } from "react";
+import './Products.css'
 
-import UserService from "../services/user.service";
-
-export const Products = () => {
-  const [content, setContent] = useState("");
-
-  useEffect(() => {
-    UserService.getProducts().then(
-      (response) => {
-        console.log(response.data)
-        setContent(response.data);
-      },
-      (error) => {
-        const contentError =
-          (error.response && error.response.data) ||
-          error.message ||
-          error.toString();
-
-        setContent(contentError);
-      }
-    );}, []);
-
+export const Products = ({products}) => {
+  console.log(products, "==> products.jsx")
   return (
-    <div className="container">
-    {Array.isArray(content) ? (
-      content.map(item => (
-        <ul key={item.id}>
-          <li>name: {item.name}</li>
-          <li>desc: {item.description}</li>
-          <li>brand: {item.brand}</li>
-          <li>stock: {item.stock}</li>
-          <li>volume: {item.volume}</li>
-          <li>weight: {item.weight}</li>
-        </ul>
-      ))
-    ) : (
-      <p>No data available</p>
-    )}
+    <div className="container products">
+      <ul>
+      {products.map(product => (
+          <li key={product.id}>
+            <img src="https://i.dummyjson.com/data/products/6/thumbnail.png" alt={product.name} />
+            <div>
+              <strong>{product.name}</strong> - ${product.price}
+            </div>
+            <div>
+              {product.brand}
+            </div>
+            <div>
+              {product.description}
+            </div>
+            <div>
+              stock: {product.stock} - volume: {product.volume}
+            </div>
+
+          </li>
+        ))}
+      </ul>
+    
     </div>
   );
 };
