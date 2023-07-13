@@ -2,13 +2,14 @@ import Products from "./Products";
 import { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
+import { Filters } from "./Filters";
 
 export const Home = () => {
   const [content, setContent] = useState([]);
   
-  const [filters] = useState({
-    category: 'Hogar',
-    minprice: 0
+  const [filters, setFilters] = useState({
+    category: 'all',
+    minPrice: 0
   })
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export const Home = () => {
   const filterProducts = (products) => {
     return products.filter(p => {
       return (
-        p.price >= filters.minprice && 
+        p.price >= filters.minPrice && 
         (
           filters.category === 'all' ||
           p.category.name === filters.category
@@ -41,7 +42,10 @@ export const Home = () => {
   const filteredProducts = filterProducts(content)
 
   return(
+    <>
+    <Filters changeFilters={setFilters} />
     <Products products={filteredProducts} />
+    </>
   );
 };
 
