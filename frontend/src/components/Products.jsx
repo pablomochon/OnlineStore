@@ -20,6 +20,9 @@ export const Products = ({products}) => {
             <div>
               stock: {product.stock} - volume: {product.volume}
             </div>
+            <div>
+              category: {product.category.name}
+            </div>
 
           </li>
         ))}
