@@ -1,7 +1,7 @@
 import Products from "./Products";
 import { useState, useEffect } from "react";
 
-import UserService from "../services/user.service";
+import UserService from "../services/product.service";
 import { Filters } from "./Filters";
 import { Cart } from "./Cart";
 import { Footer } from "./Footer";
