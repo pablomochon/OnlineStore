@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import UserService from "../services/user.service";
 import { Filters } from "./Filters";
 import { Cart } from "./Cart";
+import { Footer } from "./Footer";
 
 export const Home = () => {
   const [content, setContent] = useState([]);
@@ -47,6 +48,7 @@ export const Home = () => {
     <Filters changeFilters={setFilters} />
     <Cart />
     <Products products={filteredProducts} />
+    <Footer></Footer>
     </>
   );
 };
