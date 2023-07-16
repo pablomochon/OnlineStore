@@ -17,7 +17,7 @@ export function Products ({products}) {
 
         return (
           <li key={product.id}>
-            <img src="https://i.dummyjson.com/data/products/6/thumbnail.png" alt={product.name} />
+            <img src={product.image} alt={product.name} />
             <div>
               <strong>{product.name}</strong> - ${product.price}
             </div>

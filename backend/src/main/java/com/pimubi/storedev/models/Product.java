@@ -20,7 +20,7 @@ public class Product {
     private int weight;
     private String volume;
     private Long stock;
-
+    private String image;
     //Here JoinColumn states that this entity is the owner of the relationship
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
@@ -28,6 +28,13 @@ public class Product {
 
 
     // GETTERS AND SETTERS
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     public Category getCategory() {
         return category;
     }
