@@ -2,8 +2,8 @@ import './Products.css'
 import { AddToCartIcon, RemoveFromCartIcon } from './Icons';
 import { useCart } from '../hook/useCart';
 
-export const Products = ({products}) => {
-  const { addToCart, cart, RemoveFromCart } = useCart()
+export function Products ({products}) {
+  const { addToCart, cart, removeFromCart } = useCart()
 
   const checkProductInCart = product =>  {
     return cart.some(item => item.id === product.id) //true or false
@@ -35,7 +35,7 @@ export const Products = ({products}) => {
             </div>
             <div>
               <button style={ {backgroundColor: isProductInCart ? 'red' : '#09f'}}
-              onClick={() => isProductInCart ? RemoveFromCart(product) : addToCart(product)}>
+              onClick={() => isProductInCart ? removeFromCart(product) : addToCart(product)}>
                 {
                   isProductInCart ?
                   <RemoveFromCartIcon /> : 
@@ -51,6 +51,6 @@ export const Products = ({products}) => {
     
     </div>
   );
-};
+}
 
 export default Products;
