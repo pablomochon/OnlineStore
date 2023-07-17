@@ -17,6 +17,10 @@
     border-bottom: 1px solid #444;
     padding-bottom: 16px;
   }
+
+  .cart li {
+    list-style: none;
+  }
   
   .cart footer {
     display: flex;
@@ -38,9 +42,9 @@
     height: 32px;
     justify-content: center;
     padding: 4px;
-    position: absolute;
-    right: 8px;
-    top: 8px;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
     transition: all .3s ease;
     width: 32px;
     z-index: 9999;

@@ -1,14 +1,11 @@
-import { useCart } from '../hook/useCart'
 import './Footer.css'
 
 export function Footer () {
-    const { cart } = useCart()
 
   return (
     <footer className='footer'>
-        {
-            JSON.stringify(cart, null, 2)
-        }
+      <h5>Online Store Java School － <span><h5>@pimubi</h5></span></h5>
+      <h6>Using React ⚛️ and Spring Boot 🍃</h6>
     </footer>
   )
 }

@@ -3,12 +3,12 @@ import { useId } from 'react'
 import { CartIcon, ClearCartIcon } from './Icons.jsx'
 import { useCart } from '../hook/useCart';
 
-function CartItem ({price, name, quantity, addToCart}) {
+function CartItem ({image, price, name, quantity, addToCart}) {
   return(
     <li>
       <img 
-      src="https://i.dummyjson.com/data/products/2/1.jpg"
-      alt="Iphone" 
+      src={image}
+      alt={name} 
       />
       <div>
           <strong>{name}</strong> - ${price}
