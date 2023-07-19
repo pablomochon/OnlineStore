@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import BoardAdmin from "./components/BoardAdmin";
 import { Nav } from "./components/Nav";
 import { AddProduct } from "./components/AddProduct";
+import CategoryForm from "./components/CategoryForm";
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/admin" element={<BoardAdmin/>} />
           <Route path="/admin/addProduct" element={<AddProduct/>} />
+          <Route path="/admin/category" element={<CategoryForm/>} />
         </Routes>
       </div>
     </div>

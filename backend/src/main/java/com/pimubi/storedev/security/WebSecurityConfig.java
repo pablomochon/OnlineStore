@@ -16,18 +16,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.pimubi.storedev.security.jwt.AuthEntryPointJwt;
 import com.pimubi.storedev.security.jwt.AuthTokenFilter;
 import com.pimubi.storedev.security.services.UserDetailsServiceImpl;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebSecurityConfig {
 
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
     }
-
     @Autowired
     UserDetailsServiceImpl userDetailsService;
     @Bean
@@ -60,7 +60,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/products/**").permitAll()
                         .requestMatchers("/api/categories/**").permitAll()
-                        .requestMatchers("/api/admin").hasRole("ADMIN")
+                        .requestMatchers("/api/admin").permitAll()
                         .anyRequest().authenticated()
                 );
 
@@ -69,4 +69,15 @@ public class WebSecurityConfig {
         return http.build();
     }
 
+    @Configuration
+    public static class CorsConfig implements WebMvcConfigurer {
+
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/api/*")
+                    .allowedOrigins("http://localhost:5173")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE")
+                    .allowedHeaders("");
+        }
+    }
 }

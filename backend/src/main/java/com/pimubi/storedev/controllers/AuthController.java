@@ -32,7 +32,7 @@ import com.pimubi.storedev.repository.UserRepository;
 import com.pimubi.storedev.security.jwt.JwtUtils;
 import com.pimubi.storedev.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

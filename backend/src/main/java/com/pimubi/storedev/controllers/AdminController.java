@@ -1,7 +1,9 @@
 package com.pimubi.storedev.controllers;
 
+import com.pimubi.storedev.models.Category;
 import com.pimubi.storedev.models.Product;
 import com.pimubi.storedev.payload.response.MessageResponse;
+import com.pimubi.storedev.repository.CategoryRepository;
 import com.pimubi.storedev.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,12 +11,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
     @Autowired
     ProductService productService;
+    @Autowired
+    private final CategoryRepository categoryRepository;
+
+    public AdminController(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
+
+    @GetMapping
+    //@PreAuthorize("hasRole('ADMIN')")
+    public String adminAccess() {
+        return "Admin Board.";
+    }
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/product")
     public ResponseEntity<MessageResponse> createProduct(@RequestBody Product product) {
         Product savedProduct = productService.saveProduct(product);
@@ -53,5 +69,36 @@ public class AdminController {
         }
     }
 
+    @CrossOrigin(origins = "*")
+    @PostMapping("/category")
+    public ResponseEntity<MessageResponse> createCategory(@RequestBody Category category) {
+        Category savedCategory = categoryRepository.save(category);
+        return ResponseEntity.ok(new MessageResponse("Category created successfully."));
+    }
+
+    @PutMapping("/category/{id}")
+    public ResponseEntity<MessageResponse> updateCategory(@PathVariable("id") Long id, @RequestBody Category categoryData) {
+        Optional<Category> category = categoryRepository.findById(id);
+        if (category.isPresent()) {
+            Category updatedCategory = category.get();
+            updatedCategory.setName(categoryData.getName());
+
+            categoryRepository.save(updatedCategory);
+            return ResponseEntity.ok(new MessageResponse("Category updated successfully."));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/category/{id}")
+    public ResponseEntity<MessageResponse> deleteCategory(@PathVariable("id") Long id) {
+        Optional<Category> category = categoryRepository.findById(id);
+        if (category.isPresent()) {
+            categoryRepository.deleteById(id);
+            return ResponseEntity.ok(new MessageResponse("Category deleted successfully."));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
 

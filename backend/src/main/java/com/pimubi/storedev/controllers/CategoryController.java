@@ -36,36 +36,4 @@ public class CategoryController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @PostMapping
-    public ResponseEntity<MessageResponse> createCategory(@RequestBody Category category) {
-        Category savedCategory = categoryRepository.save(category);
-        return ResponseEntity.ok(new MessageResponse("Category created successfully."));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<MessageResponse> updateCategory(@PathVariable("id") Long id, @RequestBody Category categoryData) {
-        Optional<Category> category = categoryRepository.findById(id);
-        if (category.isPresent()) {
-            Category updatedCategory = category.get();
-            updatedCategory.setName(categoryData.getName());
-            // Actualizar otros atributos según sea necesario
-
-            categoryRepository.save(updatedCategory);
-            return ResponseEntity.ok(new MessageResponse("Category updated successfully."));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<MessageResponse> deleteCategory(@PathVariable("id") Long id) {
-        Optional<Category> category = categoryRepository.findById(id);
-        if (category.isPresent()) {
-            categoryRepository.deleteById(id);
-            return ResponseEntity.ok(new MessageResponse("Category deleted successfully."));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 }
