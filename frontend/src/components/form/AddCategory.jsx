@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProductService from "../services/product.service";
+import ProductService from "../../services/product.service";
 
 
 const CategoryForm = () => {

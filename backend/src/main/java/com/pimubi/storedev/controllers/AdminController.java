@@ -37,7 +37,7 @@ public class AdminController {
         return ResponseEntity.ok(new MessageResponse("Product created successfully."));
     }
 
-    @PutMapping("/product/{id}")
+    @PutMapping("/products/{id}")
     public ResponseEntity<MessageResponse> updateProduct(@PathVariable("id") Long id, @RequestBody Product productData) {
         Optional<Product> product = productService.getProductById(id);
         if (product.isPresent()) {
@@ -58,7 +58,7 @@ public class AdminController {
         }
     }
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/products/{id}")
     public ResponseEntity<MessageResponse> deleteProduct(@PathVariable("id") Long id) {
         Optional<Product> product = productService.getProductById(id);
         if (product.isPresent()) {
@@ -75,7 +75,7 @@ public class AdminController {
         return ResponseEntity.ok(new MessageResponse("Category created successfully."));
     }
 
-    @PutMapping("/category/{id}")
+    @PutMapping("/categories/{id}")
     public ResponseEntity<MessageResponse> updateCategory(@PathVariable("id") Long id, @RequestBody Category categoryData) {
         Optional<Category> category = categoryRepository.findById(id);
         if (category.isPresent()) {
@@ -89,7 +89,7 @@ public class AdminController {
         }
     }
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/categories/{id}")
     public ResponseEntity<MessageResponse> deleteCategory(@PathVariable("id") Long id) {
         Optional<Category> category = categoryRepository.findById(id);
         if (category.isPresent()) {

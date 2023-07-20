@@ -36,11 +36,10 @@ const sendCategory = async(name) => {
   }
 }
 
-const sendProduct = 
-
 const ProductService = {
     getProducts,
-    sendCategory
+    sendCategory,
+
   };
   
 export default ProductService;

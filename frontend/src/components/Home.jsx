@@ -48,7 +48,6 @@ export const Home = () => {
     <Filters changeFilters={setFilters} />
     <Cart />
     <Products products={filteredProducts} />
-    <Footer></Footer>
     </>
   );
 };
