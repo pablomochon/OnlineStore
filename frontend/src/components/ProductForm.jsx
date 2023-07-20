@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import AuthService from "../services/auth.service";
 
-export const AddProduct = () => {
+export const ProductForm = () => {
 
   const [showContent, setShowContent] = useState(false);
 

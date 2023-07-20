@@ -3,7 +3,8 @@ package com.pimubi.storedev.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -11,13 +12,15 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import com.pimubi.storedev.security.jwt.AuthEntryPointJwt;
 import com.pimubi.storedev.security.jwt.AuthTokenFilter;
 import com.pimubi.storedev.security.services.UserDetailsServiceImpl;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebSecurityConfig {
@@ -50,6 +53,41 @@ public class WebSecurityConfig {
         return authProvider;
     }
 
+    private CorsFilter corsFilter() {
+        /*
+         CORS requests are managed only if headers Origin and Access-Control-Request-Method are available on OPTIONS requests
+         (this filter is simply ignored in other cases).
+         This filter can be used as a replacement for the @Cors annotation.
+        */
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+
+        String portalUrl = "http://localhost:5173";
+        config.addAllowedOrigin(portalUrl);
+
+        config.addAllowedHeader(HttpHeaders.ORIGIN);
+        config.addAllowedHeader(HttpHeaders.CONTENT_TYPE);
+        config.addAllowedHeader(HttpHeaders.ACCEPT);
+        config.addAllowedHeader(HttpHeaders.AUTHORIZATION);
+        config.addAllowedHeader(HttpHeaders.COOKIE);
+        config.addAllowedHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN);
+
+        config.addAllowedMethod(HttpMethod.GET);
+        config.addAllowedMethod(HttpMethod.PUT);
+        config.addAllowedMethod(HttpMethod.POST);
+        config.addAllowedMethod(HttpMethod.OPTIONS);
+        config.addAllowedMethod(HttpMethod.DELETE);
+        config.addAllowedMethod(HttpMethod.PATCH);
+
+        config.setMaxAge(3600L);
+
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -63,21 +101,11 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/admin").permitAll()
                         .anyRequest().authenticated()
                 );
-
+                
+        http.addFilterAfter(corsFilter(), ExceptionTranslationFilter.class);
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
-    @Configuration
-    public static class CorsConfig implements WebMvcConfigurer {
-
-        @Override
-        public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/api/*")
-                    .allowedOrigins("http://localhost:5173")
-                    .allowedMethods("GET", "POST", "PUT", "DELETE")
-                    .allowedHeaders("");
-        }
-    }
 }

@@ -1,14 +1,12 @@
 package com.pimubi.storedev.controllers;
 
 import com.pimubi.storedev.models.Product;
-import com.pimubi.storedev.payload.response.MessageResponse;
 import com.pimubi.storedev.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

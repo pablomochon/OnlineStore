@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/admin")
 public class AdminController {
     @Autowired
@@ -30,8 +31,7 @@ public class AdminController {
         return "Admin Board.";
     }
 
-    @CrossOrigin(origins = "*")
-    @PostMapping("/product")
+    @PostMapping("/products")
     public ResponseEntity<MessageResponse> createProduct(@RequestBody Product product) {
         Product savedProduct = productService.saveProduct(product);
         return ResponseEntity.ok(new MessageResponse("Product created successfully."));
@@ -69,8 +69,7 @@ public class AdminController {
         }
     }
 
-    @CrossOrigin(origins = "*")
-    @PostMapping("/category")
+    @PostMapping("/categories")
     public ResponseEntity<MessageResponse> createCategory(@RequestBody Category category) {
         Category savedCategory = categoryRepository.save(category);
         return ResponseEntity.ok(new MessageResponse("Category created successfully."));

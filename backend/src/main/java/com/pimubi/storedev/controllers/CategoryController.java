@@ -36,4 +36,10 @@ public class CategoryController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping
+    public ResponseEntity<MessageResponse> createCategory(@RequestBody Category category) {
+        Category savedCategory = categoryRepository.save(category);
+        return ResponseEntity.ok(new MessageResponse("Category created successfully."));
+    }
 }

@@ -23,8 +23,8 @@ export const BoardAdmin = () => {
         <header className="jumbotron">
         <h1>Hello {currentUser.username}, what do you want to do?</h1>
         <div className="list-group">
-          <Link to={"/admin/AddProduct"} className="btn btn-primary">Add a product</Link>
-          <Link to={"/admin/category"} className="btn btn-primary">Add a category</Link>
+          <Link to={"/admin/AddProduct"} className="btn btn-primary mb-3">Add product</Link>
+          <Link to={"/admin/category"} className="btn btn-primary mb-3">Add category</Link>
         </div>
 
         </header>
