@@ -28,7 +28,7 @@ export const BoardAdmin = () => {
           <Link to={"/admin/deleteProduct"} className="btn btn-primary mb-3">🗑️ Delete product </Link>
           <Link to={"/admin/addCategories"} className="btn btn-primary mb-3">➕ Add category </Link>
           <Link to={"/admin/editCategories"} className="btn btn-primary mb-3">✏️ Edit category </Link>
-          <Link to={"/admin/deleteCategories"} className="btn btn-primary mb-3">🗑️ Edit category </Link>
+          <Link to={"/admin/deleteCategories"} className="btn btn-primary mb-3">🗑️ Delete category </Link>
         </div>
 
         </header>
