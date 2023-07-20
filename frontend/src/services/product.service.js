@@ -13,7 +13,7 @@ const sendCategory = async(name) => {
   try{
     const currentUser = AuthService.getCurrentUser();
     const token = currentUser.accessToken;
-    const response = await axios.post(API_URL + "admin/category",
+    const response = await axios.post(API_URL + "admin/categories",
     { name },
     {
       headers: {
@@ -22,22 +22,21 @@ const sendCategory = async(name) => {
       },
     }
     );
-    
 
     if (response.status === 200) {
       // Categoría creada exitosamente, puedes realizar acciones adicionales aquí
       console.log("Categoría creada exitosamente");
-    } else {
-      // Ocurrió un error al crear la categoría, maneja la respuesta adecuadamente
-      console.error("Error al crear categoría");
-      console.log(response);
+      alert("category created succesfully!")
+    }else{
+      alert("error, please try another one")
     }
-
   }
   catch(e){
-    console.error("error ==>", e)
+    return console.error("error ==>", e)
   }
 }
+
+const sendProduct = 
 
 const ProductService = {
     getProducts,
