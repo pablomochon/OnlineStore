@@ -5,7 +5,7 @@ import axios from 'axios';
 export function Filters ({ changeFilters }) {
   const [minPrice, setMinPrice] = useState(0)
   const [categories, setCategories] = useState([]);
-  const [selectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
     // Fetch categories when the component mounts
@@ -31,10 +31,12 @@ export function Filters ({ changeFilters }) {
   }
 
   const handleChangeCategory = (event) => {
-    changeFilters(prevState => ({
+    const value = event.target.value;
+    setSelectedCategory(value === 'all' ? 'all' : value);
+    changeFilters((prevState) => ({
       ...prevState,
-      category: event.target.value
-    }))
+      category: value,
+    }));
   }
   return (
 <section className='filters mb-5'>
@@ -64,7 +66,7 @@ export function Filters ({ changeFilters }) {
             onChange={handleChangeCategory}
             value={selectedCategory}
           >
-            <option value='all'>All</option>
+            <option value='all' >All</option>
             {categories.map((category) => (
               <option key={category.id} value={category.name}>
                 {category.name}
