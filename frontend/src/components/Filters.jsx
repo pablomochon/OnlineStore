@@ -5,7 +5,7 @@ import axios from 'axios';
 export function Filters ({ changeFilters }) {
   const [minPrice, setMinPrice] = useState(0)
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory] = useState('all');
 
   useEffect(() => {
     // Fetch categories when the component mounts
