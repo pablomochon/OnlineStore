@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AuthService from "../../services/auth.service";
+import { fetchCategories } from '../../services/categoy.service';
 
 const ProductForm = () => {
   const [name, setName] = useState('');
@@ -18,18 +19,13 @@ const ProductForm = () => {
 
   // Fetch all categories when the component mounts
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const apiUrl = 'http://localhost:8080/api/categories';
-        const response = await axios.get(apiUrl);
-        setCategories(response.data); // Update categories state with the fetched data
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-      }
-    };
-
-    fetchCategories();
+    fetchCategoriesData();
   }, []);
+
+  const fetchCategoriesData = async () => {
+    const categoriesData = await fetchCategories();
+    setCategories(categoriesData);
+  };
 
   const handleSubmit = async(e) => {
     e.preventDefault();

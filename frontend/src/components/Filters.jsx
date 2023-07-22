@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Filters.css'
-import axios from 'axios';
+import { fetchCategories } from '../services/categoy.service';
 
 export function Filters ({ changeFilters }) {
   const [minPrice, setMinPrice] = useState(0)
@@ -9,16 +9,12 @@ export function Filters ({ changeFilters }) {
 
   useEffect(() => {
     // Fetch categories when the component mounts
-    fetchCategories();
+    fetchCategoriesData();
   }, []);
 
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/api/categories');
-      setCategories(response.data);
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
+  const fetchCategoriesData = async () => {
+    const categoriesData = await fetchCategories();
+    setCategories(categoriesData);
   };
 
   const handleChangeMinPrice = (event) => {
