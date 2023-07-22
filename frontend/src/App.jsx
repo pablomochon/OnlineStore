@@ -13,6 +13,7 @@ import PutProduct from "./components/form/PutProduct"
 import AddCategory from "./components/form/AddCategory";
 import DeleteProduct from "./components/form/DeleteProduct";
 import EditCategory from "./components/form/EditCategory";
+import CartDetail from "./components/CartDetail";
 
 const App = () => {
 
@@ -36,6 +37,7 @@ const App = () => {
 
           <Route path="/admin/addCategories" element={<AddCategory/>} />
           <Route path="/admin/editCategories" element={<EditCategory/>} />
+          <Route path="/cart" element={<CartDetail/>}></Route>
 
         </Routes>
       </div>
