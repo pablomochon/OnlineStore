@@ -19,7 +19,7 @@ export function Products ({products}) {
           <li key={product.id}>
             <img src={product.image} alt={product.name} />
             <div>
-              <strong>{product.name}</strong> - ${product.price}
+              <strong>{product.name}</strong> - {product.price}€
             </div>
             <div>
               {product.brand}

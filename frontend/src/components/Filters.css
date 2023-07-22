@@ -1,12 +1,51 @@
 .filters {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-    font-weight: 700;
-  }
-  
-  .filters > div {
-    display: flex;
-    gap: 1rem;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+
+.filters > div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Custom styles for the Price filter */
+.filters label[for='price'] {
+  margin-right: 0.5rem;
+}
+
+.filters input[type='range'] {
+  width: 200px;
+  margin-right: 0.5rem;
+}
+
+.filters span {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #09f;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.filters input[type='range'] {
+  width: 200px;
+  margin-right: 0.5rem;
+}
+
+.filters label[for='category'] {
+  margin-right: 0.5rem;
+}
+
+.filters select#categoryFilterId {
+  padding: 0.5rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none;
+  font-size: 14px;
+}
