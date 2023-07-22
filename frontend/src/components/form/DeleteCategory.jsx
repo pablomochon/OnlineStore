@@ -36,8 +36,8 @@ const DeleteCategory = () => {
   return (
     <div>
       <div>
-        <label>Enter the Category ID to delete:</label>
-        <input type="text" value={categoryId} onChange={handleCategoryIdChange} />
+        <label className="form-label">Enter the Category ID to delete:</label>
+        <input type="text" className="form-control" value={categoryId} onChange={handleCategoryIdChange} />
         <button onClick={handleDeleteCategory}>Delete Category</button>
       </div>
 
