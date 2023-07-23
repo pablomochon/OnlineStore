@@ -9,7 +9,7 @@ function CartItem({ image, price, name, quantity, addToCart }) {
     <li>
       <img src={image} alt={name} />
       <div>
-        <strong>{name}</strong> - ${price}
+        <strong>{name}</strong> - {price}€
       </div>
       <footer>
         <small>qty: {quantity}</small>
@@ -48,8 +48,8 @@ export function Cart() {
             <button className="btn btn-danger" onClick={clearCart}>
               <ClearCartIcon /> Clear Cart
             </button>
-            <Link to="/cart/checkout" className="btn btn-primary">
-              Proceed to Checkout
+            <Link to="/cart" className="btn btn-primary">
+              Pay
             </Link>
           </footer>
         )}

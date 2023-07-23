@@ -10,10 +10,10 @@ function CartItem({ image, price, name, quantity }) {
         style={{ maxWidth: '100px', marginRight: '20px' }}
       />
       <div>
-        <strong>{name}</strong> - ${price}
+        <strong>{name}</strong> - {price}€
       </div>
       <footer className="ml-auto">
-        <small>qty: {quantity}</small>
+        <small>Quantity: {quantity}</small>
       </footer>
     </li>
   );
@@ -41,7 +41,7 @@ const CartDetail = () => {
         </ul>
       </aside>
       <div className="mb-3">
-        <strong>Total: ${getTotal()}</strong>
+        <strong>Total: {getTotal()}€</strong>
       </div>
       <Link to="/cart/checkout" className="btn btn-primary">
         Proceed to Checkout
