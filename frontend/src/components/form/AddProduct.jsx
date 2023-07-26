@@ -54,7 +54,7 @@ const ProductForm = () => {
       }
     })
       .then(response => {
-   
+        alert("create a product successfully")
         console.log(response.data);
         console.log("todo OK");
       })

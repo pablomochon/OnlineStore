@@ -1,7 +1,11 @@
 package com.pimubi.storedev.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,25 +17,32 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dateCreated;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItem> items = new ArrayList<>();
+    private String status;
 
-    @Column(nullable = false)
-    private LocalDateTime orderDate;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "pk.order")
+    @Valid
+    private List<OrderProduct> orderProducts = new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private PaymentStatus paymentStatus;
+    @Transient
+    public Double getTotalOrderPrice() {
+        double sum = 0D;
+        List<OrderProduct> orderProducts = getOrderProducts();
+        for (OrderProduct op : orderProducts) {
+            sum += op.getTotalPrice();
+        }
+        return sum;
+    }
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private OrderStatus orderStatus;
+    @Transient
+    public int getNumberOfProducts() {
+        return this.orderProducts.size();
+    }
 
-    // Constructors, getters, and setter
+    // standard getters and setters
 
     public Long getId() {
         return id;
@@ -41,43 +52,27 @@ public class Order {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public LocalDate getDateCreated() {
+        return dateCreated;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
-    public List<OrderItem> getItems() {
-        return items;
+    public String getStatus() {
+        return status;
     }
 
-    public void setItems(List<OrderItem> items) {
-        this.items = items;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public LocalDateTime getOrderDate() {
-        return orderDate;
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public PaymentStatus getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(PaymentStatus paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 }
