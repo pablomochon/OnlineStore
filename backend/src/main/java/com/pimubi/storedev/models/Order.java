@@ -2,13 +2,13 @@ package com.pimubi.storedev.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "orders")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,15 +18,20 @@ public class Order {
     private User user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private List<OrderItem> items = new ArrayList<>();
 
     @Column(nullable = false)
-    private String shippingAddress;
+    private LocalDateTime orderDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String creditCard;
+    private PaymentStatus paymentStatus;
 
-    // Constructors, getters, and setters
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private OrderStatus orderStatus;
+
+    // Constructors, getters, and setter
 
     public Long getId() {
         return id;
@@ -44,27 +49,35 @@ public class Order {
         this.user = user;
     }
 
-    public List<OrderDetail> getOrderDetails() {
-        return orderDetails;
+    public List<OrderItem> getItems() {
+        return items;
     }
 
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
-        this.orderDetails = orderDetails;
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
-    public String getShippingAddress() {
-        return shippingAddress;
+    public LocalDateTime getOrderDate() {
+        return orderDate;
     }
 
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public String getCreditCard() {
-        return creditCard;
+    public PaymentStatus getPaymentStatus() {
+        return paymentStatus;
     }
 
-    public void setCreditCard(String creditCard) {
-        this.creditCard = creditCard;
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
