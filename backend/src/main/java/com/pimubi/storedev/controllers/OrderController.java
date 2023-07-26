@@ -13,9 +13,4 @@ import java.util.List;
 @RequestMapping("/api/order")
 public class OrderController {
 
-    @PostMapping("")
-    public ResponseEntity<MessageResponse> createOrder(@RequestBody List<OrderDTO> orders) {
-
-    }
-
 }
