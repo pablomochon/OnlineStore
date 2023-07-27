@@ -1,7 +1,7 @@
 import './Cart.css';
 import { useId } from 'react';
 import { CartIcon, ClearCartIcon } from './Icons.jsx';
-import { useCart } from '../hook/useCart';
+import { useCart } from '../../hook/useCart';
 import { Link } from 'react-router-dom';
 
 function CartItem({ image, price, name, quantity, addToCart }) {

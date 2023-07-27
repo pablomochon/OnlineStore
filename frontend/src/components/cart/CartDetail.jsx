@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useCart } from '../hook/useCart';
+import { useCart } from '../../hook/useCart';
 import { ClearCartIcon } from './Icons';
 
 function CartItem({ image, price, name, quantity, id }) {

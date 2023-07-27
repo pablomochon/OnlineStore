@@ -35,7 +35,7 @@ export function Filters ({ changeFilters }) {
     }));
   }
   return (
-<section className='filters mb-5'>
+  <section className='filters mx-5'>
       <div className='row'>
         <div className='col'>
           <label htmlFor='price'>Price:</label>

@@ -1,28 +1,25 @@
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 import Home from "./components/Home";
-import Profile from "./components/Profile";
+import Profile from "./components/layout/Profile";
 import BoardAdmin from "./components/BoardAdmin";
-import { Nav } from "./components/Nav";
+import { Nav } from "./components/layout/Nav";
 import AddProduct  from "./components/form/AddProduct";
 import PutProduct from "./components/form/PutProduct"
 import AddCategory from "./components/form/AddCategory";
 import DeleteProduct from "./components/form/DeleteProduct";
 import EditCategory from "./components/form/EditCategory";
-import CartDetail from "./components/CartDetail";
-import Checkout from "./components/Checkout";
+import CartDetail from "./components/cart/CartDetail";
+import Checkout from "./components/cart/Checkout";
 
 const App = () => {
 
   return (
-    <div>
+    <>
       <Nav></Nav>
-
-      <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/home" element={<Home/>} />
@@ -42,8 +39,7 @@ const App = () => {
           <Route path="/cart/checkout" element={<Checkout/>}></Route>
 
         </Routes>
-      </div>
-    </div>
+    </>
   );
 };
 
