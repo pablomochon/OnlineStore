@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../hook/useCart';
 
-function CartItem({ image, price, name, quantity }) {
+function CartItem({ image, price, name, quantity, id }) {
+  const { addToCart, decreaseQuantity } = useCart();
+
   return (
     <li className="list-group-item d-flex align-items-center">
       <img
@@ -12,9 +14,15 @@ function CartItem({ image, price, name, quantity }) {
       <div>
         <strong>{name}</strong> - {price}€
       </div>
-      <footer className="ml-auto">
-        <small>Quantity: {quantity}</small>
-      </footer>
+      <div className="ml-auto">
+        <span>Quantity: {quantity}</span>
+        <button className="btn btn-primary mx-2" onClick={() => addToCart({ id })}>
+          +
+        </button>
+        <button className="btn btn-danger" onClick={() => decreaseQuantity({ id })}>
+          -
+        </button>
+      </div>
     </li>
   );
 }
