@@ -1,10 +1,10 @@
 import Products from "./Products";
 import { useState, useEffect } from "react";
 
-import {ProductService} from '../services/product.service';
-import {Filters} from "./Filters";
-import {Cart} from "./cart/Cart";
-import { Footer } from './layout/Footer'
+import UserService from "../services/product.service";
+import { Filters } from "./Filters";
+import { Cart } from "./Cart";
+import { Footer } from "./Footer";
 
 export const Home = () => {
   const [content, setContent] = useState([]);
@@ -15,7 +15,7 @@ export const Home = () => {
   })
 
   useEffect(() => {
-    ProductService.getProducts().then(
+    UserService.getProducts().then(
       (response) => {
         setContent(response.data);
       },
@@ -44,12 +44,11 @@ export const Home = () => {
   const filteredProducts = filterProducts(content)
 
   return(
-    <div>
+    <>
     <Filters changeFilters={setFilters} />
     <Cart />
     <Products products={filteredProducts} />
-    <Footer />
-    </div>
+    </>
   );
 };
 

@@ -4,11 +4,11 @@ import AuthService from "../services/auth.service";
 const API_URL = "http://localhost:8080/api/";
 
 
-export const getProducts = () => {
+const getProducts = () => {
   return axios.get(API_URL + "products");
 };
 
-export const sendCategory = async(name) => {
+const sendCategory = async(name) => {
 
   try{
     const currentUser = AuthService.getCurrentUser();
@@ -36,7 +36,7 @@ export const sendCategory = async(name) => {
   }
 }
 
-export const ProductService = {
+const ProductService = {
     getProducts,
     sendCategory,
 
