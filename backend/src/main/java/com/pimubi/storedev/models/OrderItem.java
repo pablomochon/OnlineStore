@@ -5,15 +5,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "payment_methods")
-public class PaymentMethod {
+@Table(name = "order_items")
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String cardNumber;
-    private String cardHolderName;
-    private String expirationDate;
-    private String cvv;
-}
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
+    private int quantity;
+}
