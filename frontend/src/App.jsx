@@ -13,6 +13,7 @@ import PutProduct from "./components/form/PutProduct"
 import AddCategory from "./components/form/AddCategory";
 import DeleteProduct from "./components/form/DeleteProduct";
 import EditCategory from "./components/form/EditCategory";
+import DeleteCategory from "./components/form/DeleteCategory";
 import CartDetail from "./components/CartDetail";
 import Checkout from "./components/Checkout";
 
@@ -38,6 +39,8 @@ const App = () => {
 
           <Route path="/admin/addCategories" element={<AddCategory/>} />
           <Route path="/admin/editCategories" element={<EditCategory/>} />
+          <Route path="/admin/deleteCategories" element={<DeleteCategory/>} />
+
           <Route path="/cart" element={<CartDetail/>}></Route>
           <Route path="/cart/checkout" element={<Checkout/>}></Route>
 

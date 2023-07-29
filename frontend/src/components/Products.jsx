@@ -10,7 +10,7 @@ export function Products ({products}) {
   }
 
   return (
-    <div className="container products">
+    <div className="products">
       <ul>
       {products.map(product => {
         const isProductInCart = checkProductInCart(product)

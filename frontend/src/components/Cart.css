@@ -1,3 +1,4 @@
+/* Common styles for cart */
 .cart {
   background: #ffffff;
   display: none;
@@ -7,7 +8,7 @@
   top: 58px;
   width: 250px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 800px; 
+  max-height: calc(100vh - 80px); /* Adjust height to fit screen */
   overflow-y: auto;
 }
 
@@ -56,6 +57,7 @@
   background-color: #08d;
 }
 
+/* Cart button */
 .cart-button {
   background: #09f;
   border-radius: 50%;
@@ -77,6 +79,28 @@
   transform: scale(1.1);
 }
 
+/* Cart visibility on smaller screens */
 .cart-button ~ input:checked ~ .cart {
   display: block;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 576px) {
+  .cart {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+  
+  .cart-button {
+    right: auto;
+    left: 16px;
+  }
+  
+  .cart-button ~ input:checked ~ .cart {
+    top: 90px; /* Adjust top position to account for header height */
+  }
 }

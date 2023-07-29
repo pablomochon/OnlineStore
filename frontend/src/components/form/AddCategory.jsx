@@ -1,15 +1,33 @@
 import { useState } from "react";
-import ProductService from "../../services/product.service";
+import AuthService from "../../services/auth.service";
+import axios from "axios";
 
 
 const CategoryForm = () => {
   const [name, setName] = useState("");
+  const [isAddCategory, setIsAddCategory] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
   e.preventDefault();
-  let response = ProductService.sendCategory(name);
-  if(response.status == 200){
-    console.log("hola yo soy kani")
+  try{
+    const currentUser = AuthService.getCurrentUser();
+    const token = currentUser.accessToken;
+    const response = await axios.post('http://localhost:8080/api/admin/categories',
+    { name },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+    }
+    );
+
+    if (response.status === 200) {
+      setIsAddCategory(true)
+    }
+  }
+  catch(e){
+    return console.error("error ==>", e)
   }
 
   };
@@ -39,6 +57,7 @@ const CategoryForm = () => {
           Create
         </button>
       </form>
+      {isAddCategory && <p className='alert alert-success'>Category has been created</p>}
     </div>
   );
 };

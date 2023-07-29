@@ -15,6 +15,7 @@ const ProductForm = () => {
   const [weight, setWeight] = useState('');
   const [image, setImage] = useState('');
 
+  const [isProductAdded, setIsProductAdded] = useState(false);
   const currentUser = AuthService.getCurrentUser();
 
   // Fetch all categories when the component mounts
@@ -53,10 +54,8 @@ const ProductForm = () => {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => {
-        alert("create a product successfully")
-        console.log(response.data);
-        console.log("todo OK");
+      .then(() => {
+        setIsProductAdded(true);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -64,6 +63,7 @@ const ProductForm = () => {
   };
 
   return (
+    <div className='container'>
      <form onSubmit={handleSubmit} className="mb-5">
       <div className="form-label">
         <label htmlFor="name">Nombre:</label>
@@ -80,27 +80,22 @@ const ProductForm = () => {
       </div>
 
       <div className="form-label">
-        <label htmlFor="categoryId">Category by ID:</label>
-        <input type="number" className="form-control" id="categoryId" value={categoryId} onChange={(e) => setCategoryId(e.target.value)} />
-      </div>
-
-      <div className="form-label">
-        <label>Precio:</label>
+        <label>Price:</label>
         <input type="number" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)} />
       </div>
 
       <div className="form-label">
-        <label>Descripción:</label>
+        <label>Decription:</label>
         <input type="text" className="form-control" value={description} onChange={(e) => setDescription(e.target.value)} />
       </div>
 
       <div className="form-label">
-        <label>Marca:</label>
+        <label>Brand:</label>
         <input type="text" className="form-control" value={brand} onChange={(e) => setBrand(e.target.value)} />
       </div>
 
       <div className="form-label">
-        <label>Volumen:</label>
+        <label>Volume:</label>
         <input type="text" className="form-control" value={volume} onChange={(e) => setVolume(e.target.value)} />
       </div>
 
@@ -115,11 +110,14 @@ const ProductForm = () => {
       </div>
 
       <div className="form-label">
-        <label>Imagen URL: http://something.jpg</label>
+        <label>image URL:</label>
         <input type="text" className="form-control mb-3" value={image} onChange={(e) => setImage(e.target.value)} />
       </div>
-      <button type="submit" className="btn btn-primary">Crear Producto</button>
+      <button type="submit" className="btn btn-primary">Create Product</button>
     </form>
+
+    {isProductAdded && <p className='alert alert-success'> Product has been created</p>}
+    </div>
   );
 };
 

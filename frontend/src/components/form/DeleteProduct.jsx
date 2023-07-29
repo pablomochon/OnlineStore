@@ -25,7 +25,7 @@ const DeleteProduct = () => {
         'Authorization': `Bearer ${accessToken}`
       }
     })
-      .then(response => {
+      .then(() => {
         setIsProductDeleted(true);
       })
       .catch(error => {
@@ -36,13 +36,13 @@ const DeleteProduct = () => {
 
   return (
     <div>
-      <div>
+      <div className='form-label'>
         <label>Enter the Product ID to delete:</label>
-        <input type="text" value={productId} onChange={handleProductIdChange} />
-        <button onClick={handleDeleteProduct}>Delete Product</button>
+        <input type="text" className='form-control' value={productId} onChange={handleProductIdChange} />
+        <button onClick={handleDeleteProduct} className='btn btn-primary'>Delete Product</button>
       </div>
 
-      {isProductDeleted && <p>Product with ID {productId} has been deleted.</p>}
+      {isProductDeleted && <p className='alert alert-success'>Product with ID {productId} has been deleted.</p>}
     </div>
   );
 };

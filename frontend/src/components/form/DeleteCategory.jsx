@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import AuthService from '../../services/auth.service';
 
@@ -24,7 +24,7 @@ const DeleteCategory = () => {
         'Authorization': `Bearer ${accessToken}`
       }
     })
-      .then(response => {
+      .then(() => {
         setIsCategoryDeleted(true);
       })
       .catch(error => {
@@ -35,13 +35,13 @@ const DeleteCategory = () => {
 
   return (
     <div>
-      <div>
-        <label className="form-label">Enter the Category ID to delete:</label>
+      <div className="form-label"> 
+        <label >Enter the Category ID to delete:</label>
         <input type="text" className="form-control" value={categoryId} onChange={handleCategoryIdChange} />
-        <button onClick={handleDeleteCategory}>Delete Category</button>
+        <button onClick={handleDeleteCategory} className="btn btn-primary">Delete Category</button>
       </div>
 
-      {isCategoryDeleted && <p>Category with ID {categoryId} has been deleted.</p>}
+      {isCategoryDeleted && <p className='alert alert-success'>Category with ID {categoryId} has been deleted.</p>}
     </div>
   );
 };

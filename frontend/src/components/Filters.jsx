@@ -38,7 +38,7 @@ export function Filters ({ changeFilters }) {
 <section className='filters mb-5'>
       <div className='row'>
         <div className='col'>
-          <label htmlFor='price'>Price:</label>
+          <label htmlFor='price'></label>
           <input
             type='range'
             id='price'
@@ -54,8 +54,8 @@ export function Filters ({ changeFilters }) {
       </div>
 
       <div className='row'>
+        <label htmlFor='category'>Categories:</label>
         <div className='col'>
-          <label htmlFor='category'>Categories</label>
           <select
             id='categoryFilterId'
             className='form-select'

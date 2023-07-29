@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
 import AuthService from '../../services/auth.service';
+import { fetchCategories } from '../../services/categoy.service';
 
 const EditCategory = () => {
   const [categoryId, setCategoryId] = useState('');
   const [categoryName, setCategoryName] = useState('');
   const [isCategoryUpdated, setIsCategoryUpdated] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [categories, setCategories] = useState([]);
 
   const handleCategoryIdChange = (e) => {
     setCategoryId(e.target.value);
+    setSelectedCategory(e.target.value)
   };
 
   const handleCategoryNameChange = (e) => {
@@ -34,7 +38,7 @@ const EditCategory = () => {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => {
+      .then(() => {
         setIsCategoryUpdated(true);
       })
       .catch(error => {
@@ -43,21 +47,54 @@ const EditCategory = () => {
       });
   };
 
-  return (
-    <div>
-      <div>
-        <label>Enter the Category ID to edit:</label>
-        <input type="text" value={categoryId} onChange={handleCategoryIdChange} />
-      </div>
-      <div>
-        <label>Enter the new Category Name:</label>
-        <input type="text" value={categoryName} onChange={handleCategoryNameChange} />
-        <button onClick={handleEditCategory}>Edit Category Name</button>
-      </div>
+  useEffect(() => {
+    // Fetch categories when the component mounts
+    fetchCategoriesData();
+  }, []);
 
-      {isCategoryUpdated && <p>Category with ID {categoryId} has been updated.</p>}
+  const fetchCategoriesData = async () => {
+    const categoriesData = await fetchCategories();
+    setCategories(categoriesData);
+  };
+
+  return (
+    <div className='container'>
+      <div className='form-group'>
+        <label htmlFor='category'>Categories</label>
+        <select
+          id='categoryFilterId'
+          className='form-control'
+          onChange={handleCategoryIdChange}
+          value={selectedCategory}
+        >
+          <option value=''>Select a category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className='form-group'>
+        <label>Enter the new Category Name:</label>
+        <input
+          type='text'
+          className='form-control'
+          value={categoryName}
+          onChange={handleCategoryNameChange}
+        />
+        <button className='btn btn-primary' onClick={handleEditCategory}>
+          Edit Category Name
+        </button>
+      </div>
+  
+      {isCategoryUpdated && (
+        <p className='alert alert-success'>
+          Category with ID {categoryId} has been updated.
+        </p>
+      )}
     </div>
-  );
+  );  
 };
 
 export default EditCategory;
