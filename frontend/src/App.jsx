@@ -15,7 +15,7 @@ import DeleteProduct from "./components/form/DeleteProduct";
 import EditCategory from "./components/form/EditCategory";
 import DeleteCategory from "./components/form/DeleteCategory";
 import CartDetail from "./components/CartDetail";
-import Checkout from "./components/Checkout";
+import Checkout from "./components/form/CheckoutForm";
 
 const App = () => {
 
