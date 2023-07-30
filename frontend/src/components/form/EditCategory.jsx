@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import AuthService from '../../services/auth.service';
-import { fetchCategories } from '../../services/categoy.service';
+import { fetchCategories } from '../../services/category.service';
 
 const EditCategory = () => {
   const [categoryId, setCategoryId] = useState('');

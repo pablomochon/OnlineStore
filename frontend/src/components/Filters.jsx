@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Filters.css'
-import { fetchCategories } from '../services/categoy.service';
+import { fetchCategories } from '../services/category.service';
 
 export function Filters ({ changeFilters }) {
   const [minPrice, setMinPrice] = useState(0)
