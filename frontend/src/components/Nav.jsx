@@ -43,7 +43,7 @@ export const Nav = () => {
         </div>
 
         {currentUser ? (
-          <div className="navbar-nav ml-auto">
+          <div className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link to={"/profile"} className="nav-link">
                 {currentUser.username}
@@ -56,7 +56,7 @@ export const Nav = () => {
             </li>
           </div>
         ) : (
-          <div className="navbar-nav ml-auto">
+          <div className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link to={"/login"} className="nav-link">
                 Login
