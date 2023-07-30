@@ -78,17 +78,13 @@ const CheckoutForm = () => {
 
       if (response.ok) {
         setOrderStatus('success');
-        console.log('Order placed successfully!');
-        // Handle success
+        // Clear cart items on successful order placement
+        window.localStorage.removeItem('cart');
       } else {
         setOrderStatus('error');
-        console.log('Failed to place the order.');
-        // Handle error
       }
     } catch (error) {
       setOrderStatus('error');
-      console.error('Error occurred:', error);
-      // Handle error
     }
   };
 

@@ -16,6 +16,7 @@ import EditCategory from "./components/form/EditCategory";
 import DeleteCategory from "./components/form/DeleteCategory";
 import CartDetail from "./components/CartDetail";
 import Checkout from "./components/form/CheckoutForm";
+import SeeOrders from "./components/SeeOrders";
 
 const App = () => {
 
@@ -43,6 +44,7 @@ const App = () => {
 
           <Route path="/cart" element={<CartDetail/>}></Route>
           <Route path="/cart/checkout" element={<Checkout/>}></Route>
+          <Route path="/myOrders" element={<SeeOrders/>}></Route>
 
         </Routes>
       </div>

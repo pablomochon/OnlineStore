@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
 import AuthService from "../services/auth.service";
+import { Link } from "react-router-dom";
 
 export const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
+
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    const a = AuthService.getCurrentUser();
+
+    if (a) {
+      setShowContent(a.roles.includes("ROLE_USER"));
+    }
+  }, []);
 
   return (
     <div className="container">
@@ -25,6 +37,16 @@ export const Profile = () => {
         {currentUser.roles &&
           currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
       </ul>
+
+      {showContent ? (
+      <div>
+        
+        <Link to={"/myOrders"} className=""><strong>See my orders 🛒</strong></Link>
+      </div>
+      ) : (
+      <div>hola admin</div>
+      )}
+
     </div>
   );
 };
