@@ -100,11 +100,11 @@ const PutProduct = () => {
             <label>Image URL:</label>
             <input type="text" className='form-control' value={productData.image} onChange={(e) => setProductData({ ...productData, image: e.target.value })} />
           </div>
-          <button type="submit" className="btn btn-primary mt-3">Save Changes</button>
+          <button type="submit" className="btn btn-primary mt-3 mb-3">Save Changes</button>
         </form>
       )}
 
-      {isProductPut && <p className='alert alert-success'>Product with ID {productId} has been deleted.</p>}
+      {isProductPut && <p className='alert alert-success'>Product with ID {productId} has been updated.</p>}
     </div>
   );
 };
