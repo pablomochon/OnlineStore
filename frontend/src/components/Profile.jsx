@@ -44,7 +44,7 @@ export const Profile = () => {
         <Link to={"/myOrders"} className=""><strong>See my orders 🛒</strong></Link>
       </div>
       ) : (
-      <div>hola admin</div>
+      <div></div>
       )}
 
     </div>
