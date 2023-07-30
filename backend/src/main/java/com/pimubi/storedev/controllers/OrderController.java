@@ -34,7 +34,7 @@ public class OrderController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Order>> getAllOrders(Authentication authentication) {
         String username = authentication.getName();
 
