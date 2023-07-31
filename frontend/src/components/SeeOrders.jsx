@@ -36,9 +36,10 @@ const SeeOrders = () => {
   };
 
   return (
-    <div className="container mt-4">
-      {error && <Alert variant="danger">{error}</Alert>}
-      {orders.map((order) => (
+<div className="container mt-4">
+    {error && <Alert variant="danger">{error}</Alert>}
+    {orders && orders.length > 0 ? (
+      orders.map((order) => (
         <div key={order.id} className="card mb-3">
           <div className="card-header">Order ID: {order.id}</div>
           <div className="card-header">Shipping Address: {order.shippingAddress}</div>
@@ -54,8 +55,11 @@ const SeeOrders = () => {
           </div>
           <div className="card-footer">Total Price: {calculateTotalPrice(order.items)}€</div>
         </div>
-      ))}
-    </div>
+      ))
+    ) : (
+      <p className="alert alert-warning">You don't have orders yet.</p>
+    )}
+  </div>
   );
 };
 
