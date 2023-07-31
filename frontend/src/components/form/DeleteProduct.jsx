@@ -58,7 +58,7 @@ const DeleteProduct = () => {
       {content ? content.map(item => <div key={item.id}><strong>id: </strong>{item.id} <strong>name: </strong>{item.name}</div>) : <div>Loading...</div>}
       <div className='form-label'>
         <label>Enter the Product ID to delete:</label>
-        <input type="text" className='form-control' value={productId} onChange={handleProductIdChange} />
+        <input type="text" className='form-control mb-3' value={productId} onChange={handleProductIdChange} />
         <button onClick={handleDeleteProduct} className='btn btn-primary'>Delete Product</button>
       </div>
 

@@ -83,7 +83,7 @@ const EditCategory = () => {
           value={categoryName}
           onChange={handleCategoryNameChange}
         />
-        <button className='btn btn-primary' onClick={handleEditCategory}>
+        <button className='btn btn-primary mt-3' onClick={handleEditCategory}>
           Edit Category Name
         </button>
       </div>
