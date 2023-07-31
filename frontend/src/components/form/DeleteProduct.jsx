@@ -1,12 +1,31 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
 import AuthService from '../../services/auth.service';
+import ProductService from '../../services/product.service';
 
 const DeleteProduct = () => {
   const [productId, setProductId] = useState('');
   const [isProductDeleted, setIsProductDeleted] = useState(false);
+  const [content, setContent] = useState('')
 
   const currentUser = AuthService.getCurrentUser();
+
+  useEffect(() => {
+    ProductService.getProducts().then(
+      (response) => {
+        console.log(response.data)
+        setContent(response.data);
+      },
+      (error) => {
+        console.log(error)
+        const contentError =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+
+        setContent(contentError);
+      }
+    );}, []);
 
   const handleProductIdChange = (e) => {
     setProductId(e.target.value);
@@ -36,6 +55,7 @@ const DeleteProduct = () => {
 
   return (
     <div>
+      {content ? content.map(item => <div key={item.id}><strong>id: </strong>{item.id} <strong>name: </strong>{item.name}</div>) : <div>Loading...</div>}
       <div className='form-label'>
         <label>Enter the Product ID to delete:</label>
         <input type="text" className='form-control' value={productId} onChange={handleProductIdChange} />
