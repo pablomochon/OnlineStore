@@ -21,3 +21,10 @@
     margin: 0;
     display: flex;
   }
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .footer {
+    display: none;
+  }
+}
