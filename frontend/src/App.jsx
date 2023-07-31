@@ -17,7 +17,6 @@ import DeleteCategory from "./components/form/DeleteCategory";
 import CartDetail from "./components/CartDetail";
 import Checkout from "./components/form/CheckoutForm";
 import SeeOrders from "./components/SeeOrders";
-import Footer from "./components/Footer";
 
 const App = () => {
 
@@ -48,8 +47,6 @@ const App = () => {
           <Route path="/myOrders" element={<SeeOrders/>}></Route>
 
         </Routes>
-
-        <Footer></Footer>
       </div>
     </div>
   );
