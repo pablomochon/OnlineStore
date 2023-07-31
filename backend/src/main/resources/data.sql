@@ -1,38 +1,38 @@
 -- CATEGORIES
-INSERT INTO categories (name) VALUES ("test");
+INSERT INTO categories (name) VALUES ("smarts TVs");
 INSERT INTO categories (name) VALUES ("laptops");
 INSERT INTO categories (name) VALUES ("keyboards");
 
 -- Insert sample products
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 1', 'Description of Product 1', 'Brand 1', 19.99, 500, '10x5x2 cm', 100, 'image1.jpg', 1);
+VALUES ('Philips 32HFL5114', '32HFL5114/12 with MediaSuite features, advanced connectivity and versatile configuration.', 'Philips', 438, 500, '732x179x494 mm', 333, 'https://img.pccomponentes.com/articles/39/391858/1661-philips-32hfl5114-12-32-led-fullhd.jpg', 1);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 2', 'Description of Product 2', 'Brand 2', 29.99, 750, '15x8x3 cm', 50, 'image2.jpg', 2);
+VALUES ('ASUS TUF Gaming F15', 'FX506HC-HN004 Intel Core i5-11400H/16GB/512GB SSD/RTX 3050/15.6', 'ASUS', 1039, 2300, '350x250x23 mm', 777, 'https://img.pccomponentes.com/articles/1046/10466208/1836-asus-tuf-gaming-f15-fx506hc-hn004-intel-core-i5-11400h-16gb-512gb-ssd-rtx-3050-156.jpg', 2);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 3', 'Description of Product 3', 'Brand 3', 9.99, 300, '8x4x1.5 cm', 200, 'image3.jpg', 1);
+VALUES ('LG 32L', ' High picture quality and a simple, user-friendly interface complement the HD image.', 'LG', 385, 300, '739x168472mm', 200, 'https://img.pccomponentes.com/articles/40/407902/1896-lg-32lt340c-32-led-hd.jpg', 1);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 4', 'Description of Product 4', 'Brand 1', 39.99, 1000, '20x10x5 cm', 30, 'image4.jpg', 3);
+VALUES ('Logitech K120', ' Keyboard con Cable USB Negro', 'Logitech', 12, 550, '450x155x23.5 mm', 222, 'https://img.pccomponentes.com/articles/4/43015/130-logitech-keyboard-k120-teclado-usb-comprar.jpg', 3);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 5', 'Description of Product 5', 'Brand 2', 14.99, 600, '12x6x3 cm', 80, 'image5.jpg', 2);
+VALUES ('Lenovo IdeaPad 3', '15ALC6 AMD Ryzen 7 5700U/16 GB/512 GB SSD/15.6', 'Lenovo', 1650, 699, '359x236x19 cm', 80, 'https://img.pccomponentes.com/articles/1063/10639213/1359-lenovo-ideapad-3-15iau7-intel-core-i5-1235u-16gb-512gb-ssd-156.jpg', 2);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 6', 'Description of Product 6', 'Brand 3', 49.99, 1200, '25x12x6 cm', 15, 'image6.jpg', 3);
+VALUES ('Apple Magic Keyboard', ' numeric keypad has an expanded layout, with navigation controls to help you scroll quickly through your documents', 'Apple', 118, 390, '418x114x10 mm', 15, 'https://img.pccomponentes.com/articles/20/201176/1.jpg', 3);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 7', 'Description of Product 7', 'Brand 1', 34.99, 850, '18x8x4 cm', 40, 'image7.jpg', 2);
+VALUES ('Product 7', 'Description of Product 7', 'Brand 1', 35, 850, '18x8x4 cm', 40, 'image7.jpg', 2);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 8', 'Description of Product 8', 'Brand 2', 64.99, 1800, '30x15x8 cm', 10, 'image8.jpg', 3);
+VALUES ('Razer Huntsman', 'V2 TKL Mechanical Gaming Keyboard RGB Switch Optical Linear Switch Red', 'Razer', 171, 550, '450x155x23 mm', 444, 'https://img.pccomponentes.com/articles/1003/10034697/1729-razer-huntsman-v2-tenkeyless-teclado-mecanico-gaming-rgb-switch-optico-lineal-red.jpg', 3);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 9', 'Description of Product 9', 'Brand 3', 27.99, 700, '14x7x3.5 cm', 60, 'image9.jpg', 1);
+VALUES ('Hisense 32A5KQ 32"', 'QLED FullHD', 'Hisense', 276, 3800, '721x179x452 mm', 666, 'https://img.pccomponentes.com/articles/1072/10728623/1379-hisense-32a5kq-32-qled-fullhd.jpg', 1);
 
 INSERT INTO products (name, description, brand, price, weight, volume, stock, image, category_id)
-VALUES ('Product 10', 'Description of Product 10', 'Brand 1', 22.99, 550, '11x6x2.5 cm', 90, 'image10.jpg', 2);
+VALUES ('Apple Macbook Pro', 'Apple M2/8GB/256GB SSD/GPU Deca Core/13.3" Silver', 'Apple', 1409, 1400, '156x30x21 mm', 999, 'https://img.pccomponentes.com/articles/1039/10392479/1202-apple-macbook-pro-apple-m2-8gb-256gb-ssd-gpu-deca-core-133-plata.jpg', 2);
 
 
 
